@@ -1,0 +1,29 @@
+{
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "contact@example.com"
+    }
+  },
+
+  "manifest_version": 2,
+  "name": "smartReader",
+  "version": "1.0",
+
+  "description": "Modify a web page to make it more readable",
+
+  "icons": {
+    "48": "icons/smartReader-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+
+      "js": ["smartReader.js"]
+    }
+  ]
+
+}

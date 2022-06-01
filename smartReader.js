@@ -106,85 +106,85 @@ function modifyHtml(finalElements) { //Process to append <b> tag
 
             var nextElement = finalElements[i].childNodes[j].nextElementSibling;
 
-            console.log(nextElement);
+            //If nodeType === text
 
-            if(values[j].nodeType === 3) { //If nodeType === text
+            if(values[j].nodeType === 3) {
 
                 var textToConvert = values[j].textContent;
 
-                var newText = document.createElement("span");
+                if(textToConvert !== "\n") {
 
-                var isLetter = false;
-                var countLetter = 0;
+                    var newText = document.createElement("span");
 
-                var textWorking = '';
+                    var isLetter = false;
+                    var countLetter = 0;
 
-                for(k = 0 ; k < textToConvert.length ; k++) {
+                    var textWorking = '';
 
-                    var bold;
-                    var textNode;
-                    var characterToChange = textToConvert.charAt(k);
-                    var secondCharacter = textToConvert.charAt(k + 1);
+                    for(k = 0 ; k < textToConvert.length ; k++) {
 
-                    var asciiOfChar = textToConvert.codePointAt(k);
+                        var bold;
+                        var textNode;
+                        var characterToChange = textToConvert.charAt(k);
+                        var secondCharacter = textToConvert.charAt(k + 1);
 
-                    isLetter = (asciiOfChar > 64 && asciiOfChar < 91) || (asciiOfChar > 96 && asciiOfChar < 123) || (asciiOfChar > 127 && asciiOfChar < 155);   
+                        var asciiOfChar = textToConvert.codePointAt(k);
 
-                    if(isLetter === true && countLetter < 2 ) { //This condition is valid at the start of a word
+                        isLetter = (asciiOfChar > 64 && asciiOfChar < 91) || (asciiOfChar > 96 && asciiOfChar < 123) || (asciiOfChar > 127 && asciiOfChar < 155);   
 
-                        if(textWorking !== '') {
+                        if(isLetter === true && countLetter < 2 ) { //This condition is valid at the start of a word
 
-                            textNode = document.createTextNode(textWorking);
-                            newText.appendChild(textNode);
+                            if(textWorking !== '') {
 
-                            textWorking = '';
+                                textNode = document.createTextNode(textWorking);
+                                newText.appendChild(textNode);
+
+                                textWorking = '';
+                            }
+
+                            bold = document.createElement("B");
+
+                            textNode = document.createTextNode(characterToChange + secondCharacter);
+
+                            bold.appendChild(textNode);
+
+                            newText.appendChild(bold);
+
+                            countLetter = countLetter + 2;
+
+                            k++;
+
+                        } else if(isLetter === false) {
+
+                            textWorking = textWorking + characterToChange;
+
+                            countLetter = 0;
+
+                        } else {
+
+                            textWorking = textWorking + characterToChange;
+
+                            countLetter++;
                         }
 
-                        bold = document.createElement("B");
+                        if(k === textToConvert.length - 1) {
 
-                        textNode = document.createTextNode(characterToChange + secondCharacter);
+                            textNode = document.createTextNode(textWorking);
+                                newText.appendChild(textNode);
 
-                        bold.appendChild(textNode);
+                                textWorking = '';
 
-                        newText.appendChild(bold);
-
-                        countLetter = countLetter + 2;
-
-                        k++;
-                    }
-                    else if(isLetter === false) {
-
-                        textWorking = textWorking + characterToChange;
-
-                        countLetter = 0;
-                    }
-                    else {
-
-                        textWorking = textWorking + characterToChange;
-
-                        countLetter++;
+                        }
                     }
 
-                    if(k === textToConvert.length - 1) {
+                    finalElements[i].insertBefore(newText, nextElement);
 
-                        textNode = document.createTextNode(textWorking);
-                            newText.appendChild(textNode);
+                    values[j].textContent = '';
 
-                            textWorking = '';
-
-                    }
                 }
-               
-                finalElements[i].insertBefore(newText, nextElement);
-
-                values[j].textContent = '';
-
             }
-            
         }
-
-    }
-    
+    }    
 }
 
 function main() {
@@ -197,7 +197,7 @@ function main() {
     assembleElements(document.body.getElementsByTagName("SPAN"), allElements);
     assembleElements(document.body.getElementsByTagName("DIV"), allElements);
     assembleElements(document.body.getElementsByTagName("BR"), allElements);
-    assembleElements(document.body.getElementsByTagName("A"), allElements);
+    assembleElements(document.body.getElementsByTagName("BLOCKQUOTE"), allElements);
 
     filterElements(allElements, finalElements);
 
@@ -205,4 +205,19 @@ function main() {
 
 }
 
-main();
+function isAddonActived() {
+
+    browser.runtime.sendMessage({mode: "state"}, function(message) {
+
+        console.log(message.mode);
+
+        if(message.mode === "enable") {
+
+            main();
+
+        }
+    });
+
+}
+
+isAddonActived();

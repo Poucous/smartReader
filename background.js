@@ -24,8 +24,8 @@ function updateIcon(state) {
 
                 path : {
     
-                    "16": "icons/button/smartReader-white-16.png",
-                    "32": "icons/button/smartReader-white-32.png"
+                    "16": "/icons/button/smartReader-white-16.png",
+                    "32": "/icons/button/smartReader-white-32.png"
                 }
             
             });
@@ -36,8 +36,8 @@ function updateIcon(state) {
 
                 path : {
     
-                    "16": "icons/button/smartReader-black-16.png",
-                    "32": "icons/button/smartReader-black-32.png"
+                    "16": "/icons/button/smartReader-black-16.png",
+                    "32": "/icons/button/smartReader-black-32.png"
                 }
             
             });
@@ -52,8 +52,8 @@ function updateIcon(state) {
 
                 path : {
     
-                    "16": "icons/button/smartReader-black-16.png",
-                    "32": "icons/button/smartReader-black-32.png"
+                    "16": "/icons/button/smartReader-black-16.png",
+                    "32": "/icons/button/smartReader-black-32.png"
                 }
             
             });
@@ -64,8 +64,8 @@ function updateIcon(state) {
 
                 path : {
     
-                    "16": "icons/button/smartReader-white-16.png",
-                    "32": "icons/button/smartReader-white-32.png"
+                    "16": "/icons/button/smartReader-white-16.png",
+                    "32": "/icons/button/smartReader-white-32.png"
                 }
             
             });

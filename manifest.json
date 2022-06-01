@@ -12,7 +12,7 @@
   "description": "Modify a web page to make it more readable",
 
   "icons": {
-    "48": "icons/smartReader-48.png"
+    "48": "/icons/smartReader-48.png"
   },
 
   "content_scripts": [
@@ -32,17 +32,17 @@
 
   "browser_action": {
     "default_icon": {
-      "16": "icons/button/smartReader-white-16.png",
-      "32": "icons/button/smartReader-white-32.png"
+      "16": "/icons/button/smartReader-white-16.png",
+      "32": "/icons/button/smartReader-white-32.png"
     },
     "default_title": "Change mode",
     "theme_icons": [{
-      "light": "icons/button/smartReader-white-16.png",
-      "dark": "icons/button/smartReader-black-16.png",
+      "light": "/icons/button/smartReader-white-16.png",
+      "dark": "/icons/button/smartReader-black-16.png",
       "size": 16
     }, {
-      "light": "icons/button/smartReader-white-32.png",
-      "dark": "icons/button/smartReader-black-32.png",
+      "light": "/icons/button/smartReader-white-32.png",
+      "dark": "/icons/button/smartReader-black-32.png",
       "size": 32
     }]
   }

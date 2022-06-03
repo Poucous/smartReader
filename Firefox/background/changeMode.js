@@ -12,11 +12,32 @@ function changeMode() {
 
         updateIcon("disable");
 
+        browser.tabs.query({}).then((tabs) => {
+
+            for(var i = 0 ; i < tabs.length ; i++) {
+
+                browser.tabs.executeScript(
+                    
+                    tabs[i].id, {
+                    file: "/content_scripts/removeBold.js"
+                });
+        }});  
+
     } else if(localStorage.getItem("state") ===  "disable") {
 
         localStorage.setItem("state", "enable");
 
         updateIcon("enable");
 
+        browser.tabs.query({}).then((tabs) => {
+
+            for(var i = 0 ; i < tabs.length ; i++) {
+
+                browser.tabs.executeScript(
+                    
+                    tabs[i].id, {
+                    file: "/main.js"
+                });
+        }});
     }
 }

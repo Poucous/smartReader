@@ -16,9 +16,6 @@ function modifyHtml(finalElements) { //Process to append <b> tag
                 <Loop> with the "k" var:
                     Browse each character of our current childNodes
 
-
-
-
     Args:
         finalElements: elements to modify
     
@@ -40,6 +37,7 @@ function modifyHtml(finalElements) { //Process to append <b> tag
                 var textToConvert = values[j].textContent;
 
                 var newText = document.createElement("span"); // Serve to incubate our textWorking
+                newText.className = "smartReader-remove";
                 newText.style = "display:unset"; // Fix Display problems
   
                 var countLetter = 0; // Indicator to only bold the first two characters

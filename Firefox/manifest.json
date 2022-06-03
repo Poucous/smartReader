@@ -15,6 +15,11 @@
     "48": "/icons/smartReader-48.png"
   },
 
+  "permissions": [
+    "<all_urls>",
+    "tabs"
+  ],
+
   "content_scripts": [
     {
       "matches": [
@@ -27,7 +32,9 @@
         "/content_scripts/filterElements.js",
         "/content_scripts/isThisTag.js",
         "/content_scripts/modifyHtml.js",
+        "/content_scripts/removeBold.js",
         "/content_scripts/textAtRoot.js",
+        "/content_scripts/isAddonActived.js",
         "main.js"
       ]
     }
@@ -57,6 +64,5 @@
       "dark": "/icons/button/smartReader-black-32.png",
       "size": 32
     }]
-  }
-  
+  }  
 }

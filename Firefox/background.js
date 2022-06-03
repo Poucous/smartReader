@@ -2,7 +2,11 @@
 if(!localStorage.getItem("state")) {
 
     localStorage.setItem("state", "enable");
+}
 
+if(localStorage.getItem("state") === "disable") {
+
+    updateIcon("disable");
 }
 
 browser.runtime.onMessage.addListener(handleMessage); // Listen message from main.js

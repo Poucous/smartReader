@@ -1,4 +1,13 @@
-function textAtRoot(elementToAnalyse) { //Check if there's text at the base, .textContent wasn't a solution because it gives children text too
+function textAtRoot(elementToAnalyse) { 
+    /* Check if there's text at the base
+
+    Args:
+        elementToAnalyse: element to analyse
+    
+    Returns:
+        bool: true is there is a text
+
+    */
 
     nodes = elementToAnalyse.childNodes;
 

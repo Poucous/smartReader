@@ -1,12 +1,23 @@
-function filterElements(elementsToFilter, finalElements) { //Filter our assembled elements
+function filterElements(elementsToFilter, finalElements) {
+
+    /* Filter our elements
+
+    Args:
+        elementsToFilter: elements to filter
+        finalElements: elements filtered
+
+    Returns:
+        array: filtered elements
+
+    */
 
     for(var i = 0; i < elementsToFilter.length; i++) {
 
         var currentElement = elementsToFilter[i];
 
-        if((textAtRoot(currentElement)) //We only take the elements that have text
+        if((textAtRoot(currentElement))
         && (isThisTagParent(currentElement, "NAV", "TABLE", "CODE") === false)
-        && (isThisTagChild(currentElement, "SCRIPT", "STYLE", "FONT") === false) //Exclude some tag names to optimise and avoid graphical bugs
+        && (isThisTagChild(currentElement, "SCRIPT", "STYLE", "FONT") === false)
         ) {
 
             finalElements.push(currentElement);
@@ -14,5 +25,4 @@ function filterElements(elementsToFilter, finalElements) { //Filter our assemble
     }
 
     return finalElements;
-
 }

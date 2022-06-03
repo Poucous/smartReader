@@ -1,5 +1,14 @@
 function updateIcon(state) {
 
+    /* Update the icon when the mode is changed
+
+    Args:
+        state: state of the addon
+
+    Returns: nothing
+
+    */
+
     var isDarkTheme = window.matchMedia("(prefers-color-scheme: dark)");
 
     if(state === "enable") {
@@ -55,7 +64,6 @@ function updateIcon(state) {
                 }
             
             });
-
         }
     }
 }

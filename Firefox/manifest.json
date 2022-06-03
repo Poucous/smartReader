@@ -23,7 +23,11 @@
       ],
 
       "js": [
-        "/content_scripts/*",
+        "/content_scripts/assembleElements.js",
+        "/content_scripts/filterElements.js",
+        "/content_scripts/isThisTag.js",
+        "/content_scripts/modifyHtml.js",
+        "/content_scripts/textAtRoot.js",
         "main.js"
       ]
     }
@@ -31,7 +35,9 @@
 
   "background": {
     "scripts": [
-      "/background/*",
+      "/background/changeMode.js",
+      "/background/handleMessage.js",
+      "/background/updateIcon.js",
       "background.js"     
     ]
   },

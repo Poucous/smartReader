@@ -8,3 +8,6 @@ The extension is already on Mozilla ! Just need to install and enjoy.
 
 ## Collaboration
 This project is open, feel free to join
+
+## Contact
+mailto:contact@smartreader.ovh

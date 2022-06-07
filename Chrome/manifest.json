@@ -1,0 +1,52 @@
+{
+  "name": "Smart Reader - Bionic Reading",
+  "manifest_version": 3,
+  "version": "1.3",
+
+  "description": "Modify a web page to make it more readable",
+
+  "icons": {
+    "48": "/icons/smartReader-48.png"
+  },
+
+  "permissions": [
+    "storage",
+    "scripting"
+  ],
+
+  "host_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*"
+      ],
+
+      "js": [
+        "/content_scripts/assembleElements.js",
+        "/content_scripts/filterElements.js",
+        "/content_scripts/isThisTag.js",
+        "/content_scripts/modifyHtml.js",
+        "/content_scripts/removeBold.js",
+        "/content_scripts/textAtRoot.js",
+        "/content_scripts/isAddonActived.js",
+        "main.js"
+      ]
+    }
+  ],
+
+  "background": {
+    "service_worker": "/background.js"     
+  },
+
+  "action": {
+    "default_icon": {
+      "16": "/icons/button/smartReader-16.png",
+      "32": "/icons/button/smartReader-32.png"
+    }
+  }  
+}

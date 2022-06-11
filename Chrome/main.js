@@ -19,7 +19,8 @@ function main() {
     assembleElements(document.body.getElementsByTagName("DIV"), allElements);
     assembleElements(document.body.getElementsByTagName("BR"), allElements);
     assembleElements(document.body.getElementsByTagName("BLOCKQUOTE"), allElements);
-
+    assembleElements(document.body.getElementsByTagName("EM"), allElements);
+    
     filterElements(allElements, finalElements);
 
     modifyHtml(finalElements);

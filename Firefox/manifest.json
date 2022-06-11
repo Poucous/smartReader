@@ -34,6 +34,7 @@
         "/content_scripts/removeBold.js",
         "/content_scripts/textAtRoot.js",
         "/content_scripts/isAddonActived.js",
+        "/content_scripts/isItLetter.js",
         "main.js"
       ]
     }

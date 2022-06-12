@@ -42,7 +42,6 @@ function modifyHtml(finalElements) { //Process to append <b> tag
   
                 var countLetter = 0; // Indicator to only bold the first two characters
                 var textWorking = ''; // Text without <b> formatting
-                var isLetter = false; // Used to separate words from special characters
                 
                 var exclusionCharacter = 0;  // Count "\n" and " " to avoid text only consisting of them, causing display problems
 
@@ -51,12 +50,12 @@ function modifyHtml(finalElements) { //Process to append <b> tag
                     var textNode; // Used to create a textNode, contening textWorking
                     var bold; // Used when the condition to append the <b> tag is valid, contening textNode
 
-                    var characterToChange = textToConvert.charAt(k);
+                    var characterToChange = textToConvert.charAt(k); 
                     var secondCharacter = textToConvert.charAt(k + 1);
-                    
-                    var asciiOfChar = textToConvert.codePointAt(k);
 
-                    isLetter = (asciiOfChar > 64 && asciiOfChar < 91) || (asciiOfChar > 96 && asciiOfChar < 123) || (asciiOfChar > 127 && asciiOfChar < 155);   
+                    var isLetter = isItLetter(textToConvert.codePointAt(k)); // Used to separate words from special characters
+                    var isLetterSecondChar = isItLetter(textToConvert.codePointAt(k + 1));
+                    var isLetterThirdChar = isItLetter(textToConvert.codePointAt(k + 2));
 
                     if(characterToChange === "\n") {
 
@@ -65,11 +64,18 @@ function modifyHtml(finalElements) { //Process to append <b> tag
                         countLetter = 0;
                         exclusionCharacter++;
 
-                    } else if(isLetter === true && countLetter < 2 ) { //This condition is valid at the start of a word
+                    } else if(isLetter === true && isLetterSecondChar === true && isLetterThirdChar === true && countLetter < 2 ) { //This condition is valid at the start of a word
+                        
                     
                         if(secondCharacter === " " || secondCharacter === "\n") {
 
                             exclusionCharacter++;
+
+                            countLetter = 0;
+
+                        } else {
+
+                            countLetter = countLetter + 2;
                         }
                             
                         if(textWorking !== '') { // Adding textWorking in a node to keep the order of the words, because we're going to append a new bold element
@@ -87,8 +93,6 @@ function modifyHtml(finalElements) { //Process to append <b> tag
                         bold.appendChild(textNode);
 
                         newText.appendChild(bold);
-
-                        countLetter = countLetter + 2;
 
                         k++;
 

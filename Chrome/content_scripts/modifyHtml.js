@@ -57,17 +57,9 @@ function modifyHtml(finalElements) { //Process to append <b> tag
                     var isLetterSecondChar = isItLetter(textToConvert.codePointAt(k + 1));
                     var isLetterThirdChar = isItLetter(textToConvert.codePointAt(k + 2));
 
-                    if(characterToChange === "\n") {
-
-                        textWorking = textWorking + characterToChange;
-
-                        countLetter = 0;
-                        exclusionCharacter++;
-
-                    } else if(isLetter === true && isLetterSecondChar === true && isLetterThirdChar === true && countLetter < 2 ) { //This condition is valid at the start of a word
-                        
-                    
-                        if(secondCharacter === " " || secondCharacter === "\n") {
+                    if(isLetter === true && isLetterSecondChar === true && isLetterThirdChar === true && countLetter < 2 ) { //This condition is valid at the start of a word
+                                           
+                        if(secondCharacter === " " || secondCharacter === "\n" || secondCharacter === "\t") {
 
                             exclusionCharacter++;
 
@@ -116,7 +108,7 @@ function modifyHtml(finalElements) { //Process to append <b> tag
                         textWorking = '';
                     }
 
-                    if(characterToChange === " ") { // Avoid display problems
+                    if(characterToChange === "\n" || characterToChange === " " || characterToChange === "\t") { // Avoid display problems
 
                         exclusionCharacter++;
                     }

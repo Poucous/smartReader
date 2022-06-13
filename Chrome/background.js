@@ -111,7 +111,7 @@ function changeMode() {
           
             chrome.storage.local.set(obj);
 
-            chrome.tabs.query({}).then((tab) => {/***********************/
+            chrome.tabs.query({}).then((tab) => {
 
             for(var i = 0 ; i < tab.length ; i++) {
 

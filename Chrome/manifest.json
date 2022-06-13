@@ -1,7 +1,7 @@
 {
   "name": "Smart Reader - Bionic Reading",
   "manifest_version": 3,
-  "version": "1.3",
+  "version": "1.4",
 
   "description": "Modify a web page to make it more readable",
 
@@ -35,6 +35,7 @@
         "/content_scripts/textAtRoot.js",
         "/content_scripts/isAddonActived.js",
         "/content_scripts/isItLetter.js",
+        "/content_scripts/updatePage.js",
         "main.js"
       ]
     }

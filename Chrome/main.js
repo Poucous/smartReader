@@ -25,6 +25,7 @@ function main() {
 
     modifyHtml(finalElements);
 
+    watchPageUpdates();
 }
 
 //Is addon actived => launch the main function on the page

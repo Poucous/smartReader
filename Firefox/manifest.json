@@ -35,6 +35,7 @@
         "/content_scripts/textAtRoot.js",
         "/content_scripts/isAddonActived.js",
         "/content_scripts/isItLetter.js",
+        "/content_scripts/updatePage.js",
         "main.js"
       ]
     }

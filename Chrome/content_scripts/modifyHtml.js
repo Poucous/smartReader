@@ -30,7 +30,7 @@ function modifyHtml(finalElements) { //Process to append <b> tag
 
         for(var j = 0 ; j < values.length ; j++) {
 
-            var nextElement = finalElements[i].childNodes[j].nextElementSibling; //Marker used at the end, for insertBefore
+            var nextElement = finalElements[i].childNodes[j].nextSibling; //Marker used at the end, for insertBefore
 
             if(values[j].nodeType === 3) {
 

@@ -5,7 +5,7 @@ function changeMode() {
     By storing the state on the localStorage
 
     */
-
+ 
     if(localStorage.getItem("state") ===  "enable") {
 
         localStorage.setItem("state", "disable");

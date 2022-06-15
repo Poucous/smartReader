@@ -55,7 +55,7 @@
       "16": "/icons/button/smartReader-white-16.png",
       "32": "/icons/button/smartReader-white-32.png"
     },
-    "default_title": "Change mode",
+    "default_title": "Smart Reader settings",
     "theme_icons": [{
       "light": "/icons/button/smartReader-white-16.png",
       "dark": "/icons/button/smartReader-black-16.png",
@@ -64,6 +64,7 @@
       "light": "/icons/button/smartReader-white-32.png",
       "dark": "/icons/button/smartReader-black-32.png",
       "size": 32
-    }]
+    }],
+    "default_popup": "/popup/smartReader_popup.html"
   }  
 }

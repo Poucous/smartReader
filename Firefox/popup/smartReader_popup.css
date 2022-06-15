@@ -1,0 +1,28 @@
+html, body {
+    width: 200px;
+}
+
+body {
+    overflow: hidden;
+    background-color: rgb(43, 42, 51);
+}
+
+#popup_content {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+#changeMode_button {
+    display: flex;
+    justify-content: center;
+}
+
+#state_button {
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+#state_img {
+    width: 80px;
+}

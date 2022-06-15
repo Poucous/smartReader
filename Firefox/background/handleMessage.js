@@ -1,6 +1,6 @@
 function handleMessage(message, sender, sendResponse) {
 
-    /* Serve to communicate with the content script: main.js
+    /* Serve to communicate with the content script: main.js and the popup page : smartReader_popup.js
 
     If we receive a message contening "mode: state", we're
     replying the state
@@ -21,8 +21,11 @@ function handleMessage(message, sender, sendResponse) {
 
         sendResponse({mode: message});
     }
-    else {
 
-        sendResponse({mode: "disable"});
+    if(message.changeMode === "yep") {
+
+        changeMode();
+
+        sendResponse({state: "done"});
     }
 }

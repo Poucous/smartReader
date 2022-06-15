@@ -11,4 +11,4 @@ if(localStorage.getItem("state") === "disable") {
 
 browser.runtime.onMessage.addListener(handleMessage); // Listen message from main.js
 
-browser.browserAction.onClicked.addListener(changeMode); //  If the user click on the icon of the toolBar
+browser.runtime.onMessage.addListener(changeModeMessage); // Listen message from smartReader_popup.js

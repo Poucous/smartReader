@@ -9,8 +9,5 @@ The fact that the beginnings of words are bolded, keeps your eyes on alert.
 ## Chrome version (Manifest v3)
 ### https://chrome.google.com/webstore/detail/smart-reader-bionic-readi/cgkfhliknoajpncfpnbmknalklgiekdj
 
-## Collaboration
-This project is open, feel free to join
-
 ## Contact
 mailto:contact@smartreader.ovh

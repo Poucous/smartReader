@@ -27,7 +27,7 @@
       ],
 
       "js": [
-        "/content_scripts/assembleElements.js",
+        "/content_scripts/assembleWantedElements.js",
         "/content_scripts/filterElements.js",
         "/content_scripts/isThisTag.js",
         "/content_scripts/modifyHtml.js",

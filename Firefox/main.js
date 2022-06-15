@@ -14,12 +14,7 @@ function main() {
     var finalElements = [];
 
     //Grouping
-    assembleElements(document.body.getElementsByTagName("P"), allElements);
-    assembleElements(document.body.getElementsByTagName("SPAN"), allElements);
-    assembleElements(document.body.getElementsByTagName("DIV"), allElements);
-    assembleElements(document.body.getElementsByTagName("BR"), allElements);
-    assembleElements(document.body.getElementsByTagName("BLOCKQUOTE"), allElements);
-    assembleElements(document.body.getElementsByTagName("EM"), allElements);
+    assembleWantedElements(allElements);
 
     filterElements(allElements, finalElements);
 

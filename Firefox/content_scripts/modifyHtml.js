@@ -69,18 +69,15 @@ function modifyHtml(finalElements) { //Process to append <b> tag
                         
                     } else {
                         newText.appendChild(document.createTextNode(word))
-                        if(characterToChange === "\n" || characterToChange === " " || characterToChange === "\t") { // Avoid display problems
-                            exclusionCharacter++;
-                        }
                     }
                     console.log(newText)
                 });
 
-                if(exclusionCharacter < textToConvert.length) {
-                    finalElements[i].insertBefore(newText, nextElement);
+                
+                finalElements[i].insertBefore(newText, nextElement);
     
-                    values[j].textContent = '';
-                }
+                values[j].textContent = '';
+                
 
                 /* Our count of exclusionCharacter needs to be lower than the length of our textToConvert
 

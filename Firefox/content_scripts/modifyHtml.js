@@ -39,80 +39,45 @@ function modifyHtml(finalElements) { //Process to append <b> tag
                 var newText = document.createElement("span"); // Serve to incubate our textWorking
                 newText.className = "smartReader-remove";
                 newText.style = "display:unset"; // Fix Display problems
-  
-                var countLetter = 0; // Indicator to only bold the first two characters
-                var textWorking = ''; // Text without <b> formatting
+
                 
-                var exclusionCharacter = 0;  // Count "\n" and " " to avoid text only consisting of them, causing display problems
+                let exclusionCharacter = 0;  // Count "\n" and " " to avoid text only consisting of them, causing display problems
 
-                for(k = 0 ; k < textToConvert.length ; k++) {
-        
-                    var textNode; // Used to create a textNode, contening textWorking
-                    var bold; // Used when the condition to append the <b> tag is valid, contening textNode
+                let node_regex = /([A-zäöüßÄÖÜ])+\w|[^\n]/g
+                let word_regex = /([A-zäöüßÄÖÜ])+/g
 
-                    var characterToChange = textToConvert.charAt(k); 
-                    var secondCharacter = textToConvert.charAt(k + 1);
+                let matching_words = textToConvert.match(node_regex)
 
-                    var isLetter = isItLetter(textToConvert.codePointAt(k)); // Used to separate words from special characters
-                    var isLetterSecondChar = isItLetter(textToConvert.codePointAt(k + 1));
-                    var isLetterThirdChar = isItLetter(textToConvert.codePointAt(k + 2));
+                matching_words.forEach(word => {
+                    if (word_regex.test(word)) {
+                        let bold = document.createElement("B")
+                        let not_bold = document.createTextNode('')
 
-                    if(isLetter === true && isLetterSecondChar === true && isLetterThirdChar === true && countLetter < 2 ) { //This condition is valid at the start of a word
-                                           
-                        if(secondCharacter === " " || secondCharacter === "\n" || secondCharacter === "\t") {
-
-                            exclusionCharacter++;
-
-                            countLetter = 0;
-
-                        } else {
-
-                            countLetter = countLetter + 2;
-                        }
+                        let len = word.length
+                        if (len > 2) {
+                            len = Math.ceil(len/2)
+                            bold.appendChild(document.createTextNode(word.substring(0, len)))
+                            not_bold = document.createTextNode(word.substring(len))
                             
-                        if(textWorking !== '') { // Adding textWorking in a node to keep the order of the words, because we're going to append a new bold element
-
-                            textNode = document.createTextNode(textWorking);
-                            newText.appendChild(textNode);
-
-                            textWorking = '';
+                        } else {
+                            bold.appendChild(document.createTextNode(word))
                         }
 
-                        bold = document.createElement("B");
-
-                        textNode = document.createTextNode(characterToChange + secondCharacter);
-
-                        bold.appendChild(textNode);
-
-                        newText.appendChild(bold);
-
-                        k++;
-
-                    } else if(isLetter === false) { // If it's a special character, the count of letter is reset to 0 and we add the text at our TextWorking
-
-                        textWorking = textWorking + characterToChange;
-
-                        countLetter = 0;
-
-                    } else { // We're going here when we got a letter and when (countLetter > 2)
-
-                        textWorking = textWorking + characterToChange;
-
-                        countLetter++;
+                        newText.appendChild(bold)
+                        newText.appendChild(not_bold)
+                        
+                        
+                    } else {
+                        newText.appendChild(document.createTextNode(word))
                     }
+                    console.log(newText)
+                });
 
-                    if(k === textToConvert.length - 1) { // If we are at the end of the loop, we add the text to a node
-
-                        textNode = document.createTextNode(textWorking);
-                        newText.appendChild(textNode);
-                        textWorking = '';
-                    }
-
-                    if(characterToChange === "\n" || characterToChange === " " || characterToChange === "\t") { // Avoid display problems
-
-                        exclusionCharacter++;
-                    }
-                }
+                
+                finalElements[i].insertBefore(newText, nextElement);
+    
+                values[j].textContent = '';
+                
 
                 /* Our count of exclusionCharacter needs to be lower than the length of our textToConvert
 
@@ -120,14 +85,7 @@ function modifyHtml(finalElements) { //Process to append <b> tag
                 because that means that our text is only composed of "\n" and " ",
                 because putting these characters in a <span> tag create a display issue
 
-                */
-
-                if(exclusionCharacter < textToConvert.length) {
-
-                    finalElements[i].insertBefore(newText, nextElement);
-    
-                    values[j].textContent = '';
-                }          
+                */        
             }   
         }
     }    

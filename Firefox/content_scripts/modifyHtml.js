@@ -1,4 +1,4 @@
-(finalElements) { //Process to append <b> tag
+function modifyHtml(finalElements) { //Process to append <b> tag
 
     /* Process to append the <b> tag at our final elements
 
